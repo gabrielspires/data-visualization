@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link  href="novus-nvd3-447cce8/build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+    <script src="novus-nvd3-447cce8/build/nv.d3.js"></script>
+    <script src="novus-nvd3-447cce8/examples/lib/stream_layers.js"></script>
+
+    <style>
+        html, body, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<svg id="WarcraftSunBurst"></svg>
+
+<script>
+
+    var chart;
+
+    nv.addGraph(function() {
+        chart = nv.models.sunburstChart();
+
+        //chart.color(d3.scale.category20c());
+
+        d3.select("#WarcraftSunBurst")
+                .datum(getData())
+                .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+    });
+
+    function getData() {
+        return [{
+            "name": "World of Warcraft Battleground Stats",
+            "color": "#FFFFFF",
+            "mode": "size", 
+            "size": 10,
+            "children": [
+                {
+                    "name": "Horde",
+                    "color": "#FF5555",
+                    "children": [
+                        {
+                            "name": "cluster",
+                            "children": [
+                                {"name": "AgglomerativeCluster", "size": 3938},
+                                {"name": "MergeEdge", "size": 743}
+                            ]
+                        },
+                        {
+                            "name": "graph",
+                            "color": "#000000",
+                            "children": [
+                                {"name": "BetweennessCentrality", "size": 3534},
+                                {"name": "SpanningTree", "size": 3416}
+                            ]
+                        },
+                        {
+                            "name": "optimization",
+                            "children": [
+                                {"name": "AspectRatioBanker", "size": 7074}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Alliance",
+                    "color": "#5555FF",
+                    "mode": "size", 
+                    "size": 10,
+                    "children": [
+                        {"name": "Easing", "size": 17010},
+                        {"name": "FunctionSequence", "size": 5842},
+                        {
+                            "name": "interpolate",
+                            "children": [
+                                {"name": "ArrayInterpolator", "size": 1983},
+                                {"name": "RectangleInterpolator", "size": 100}
+                            ]
+                        },
+                        {"name": "ISchedulable", "size": 1041},
+                        {"name": "Tween", "size": 6006}
+                    ]
+                }
+            ]
+        }];
+    }
+
+</script>
+</body>
+</html>
