@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="mainApp.controllers">
 
-  <head>
-    <meta charset="utf-8" />
-    <title>Angular-nvD3 Sunburst Chart</title>
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <link rel="stylesheet" href="style.css" />
-      <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.min.css">
-    <script src="bower_components/d3/d3.min.js"></script>
-    <script src="bower_components/nvd3/build/nv.d3.min.js"></script> <!-- or use another assembly -->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
-    <script src="script.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Angular-nvD3 Sunburst Chart</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.min.css">
+  <script src="bower_components/d3/d3.min.js"></script>
+  <script src="bower_components/nvd3/build/nv.d3.min.js"></script> <!-- or use another assembly -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+  <script src="script.js"></script>
+</head>
 
-  <body ng-controller="sunburstChartCtrl">
-    
-    <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
-  </body>
+<body ng-controller="sunburstChartCtrl">
+  <!-- <img src="horde_banner.jpg" width="50px"></img> -->
+
+  <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+</body>
 
 </html>
