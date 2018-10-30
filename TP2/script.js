@@ -51,7 +51,7 @@ app.controller('sunburstChartCtrl', function ($scope) {
         "name": "flare",
         "color": "#FFFFFF",
         "children": [{
-                "name": "Horde",
+                'name': 'Horde',
                 "color": "#8C1616",
                 "size": 0,
                 "children": [{

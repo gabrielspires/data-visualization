@@ -7,12 +7,34 @@ output = {
     "children": [{
         "name": "Horde",
         "color": "#8C1616",
-        "children": [{}]
+        "children": [{
+            {"name": "Arathi Basin", "size": 0},
+            {"name": "Battle for Gilneas", "size": 0},
+            {"name": "Deepwind Gorge", "size": 0},
+            {"name": "Eye of The Storm", "size": 0},
+            {"name": "Strand of The Ancients", "size": 0},
+            {"name": "Silvershard Mines", "size": 0},
+            {"name": "Seething Shore", "size": 0},
+            {"name": "Temple of Kotmogu", "size": 0},
+            {"name": "Twin Peaks", "size": 0},
+            {"name": "Warsong Gulch", "size": 0}
+        }]
     },
     {
         "name": "Alliance",
         "color": "#0240AB",
-        "children": [{}]
+        "children": [{
+            {"name": "Arathi Basin", "size": 0},
+            {"name": "Battle for Gilneas", "size": 0},
+            {"name": "Deepwind Gorge", "size": 0},
+            {"name": "Eye of The Storm", "size": 0},
+            {"name": "Strand of The Ancients", "size": 0},
+            {"name": "Silvershard Mines", "size": 0},
+            {"name": "Seething Shore", "size": 0},
+            {"name": "Temple of Kotmogu", "size": 0},
+            {"name": "Twin Peaks", "size": 0},
+            {"name": "Warsong Gulch", "size": 0}
+        }]
     }]
 }
 allywon = 0
@@ -35,6 +57,21 @@ matchesPerBG = {
     "WG": 0
 }
 
+nameMap = {
+    "Horde": 0,
+    "Alliance": 1,
+    "AB": 0,
+    "BG": 1,
+    "DG": 2,
+    "ES": 3,
+    "SA": 4,
+    "SM": 5,
+    "SS": 6,
+    "TK": 7,
+    "TP": 8,
+    "WG": 9
+}
+
 with open('wowbgs2.csv') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
     for row in csv_reader:
@@ -48,22 +85,31 @@ with open('wowbgs2.csv') as csv_file:
             bgcode = row[1]
             if row[2] == "Alliance":
                 if row[-4] == '1':
+                    #print("Alliance won in", battlegrounds[row[0]])
+                    output["children"][nameMap[row[2]]]["children"][0][nameMap[row[0]]] += 1
+                    #print(output["children"][nameMap[row[2]]]["children"][0][nameMap[row[0]]])
                     allywon += 1
                     hordelost += 1
                 else:
+                    #print("Horde won in", battlegrounds[row[0]])
+                    output["children"][nameMap[row[2]]]["children"][0][nameMap[row[0]]] += 1
                     allylost += 1
                     hordewon += 1
             elif row[2] == "Horde":
                 if row[-4] == '1': 
+                    #print("Horde won in", battlegrounds[row[0]])
+                    output["children"][nameMap[row[2]]]["children"][0][nameMap[row[0]]] += 1
                     hordewon += 1
                     allylost += 1
                 else: 
+                    #print("Alliance won in", battlegrounds[row[0]])
+                    output["children"][nameMap[row[2]]]["children"][0][nameMap[row[0]]] += 1
                     allywon += 1
                     hordelost += 1
         
-    pprint.pprint(matchesPerBG)
-    pprint.pprint(output)
-
+    #pprint.pprint(matchesPerBG)
+    print(output)
+'''
     print("\n\n\nRows: ", rows)
     print("Ally won:  ", allywon)
     print("Ally lost: ", allylost)
@@ -73,6 +119,8 @@ with open('wowbgs2.csv') as csv_file:
     print("Horde lost: ", hordelost)
     print("Total horde profit:", hordewon-hordelost)
 
+    print(output["children"][0]["name"])
+'''
 '''
 {
     "name": "flare",
