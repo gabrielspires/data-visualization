@@ -23,19 +23,18 @@ app.controller('sunburstChartCtrl', function ($scope) {
     $scope.options = {
         chart: {
             type: 'sunburstChart',
-            height: 850,
+            // height: 650,
+            // width: 920,
             color: d3.scale.category20c(),
             duration: 950,
             mode: 'size',
-            groupColorByParent: false
-        },
-        title: {
-            enable: true,
-            text: "World of Warcraft Battleground Statistics",
-            className: "h4",
-            css: {
-                width: "600px",
-                textAlign: "right"
+            groupColorByParent: false,
+            showLabels: true,
+            margin: {
+                "top": 0,
+                "right": 0,
+                "bottom": 200,
+                "left": 0
             }
         },
         styles: {
@@ -47,76 +46,40 @@ app.controller('sunburstChartCtrl', function ($scope) {
         }
     };
 
-    $scope.data = [{
-        "name": "flare",
-        "color": "#FFFFFF",
-        "children": [{
-                'name': 'Horde',
+    $scope.data = [
+        {
+            "name": "Battlegrounds Played",
+            "color": "#FFFFFF",
+            "children": [{
+                "name": "Horde",
                 "color": "#8C1616",
-                "size": 0,
-                "children": [{
-                        "name": "Warsong Gulch",
-                        "children": [{
-                                "name": "AgglomerativeCluster",
-                                "size": 60
-                            },
-                            {
-                                "name": "MergeEdge"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "graph",
-                        "children": [{
-                                "name": "BetweennessCentrality"
-                            },
-                            {
-                                "name": "SpanningTree"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "optimization",
-                        "children": [{
-                            "name": "AspectRatioBanker"
-                        }]
-                    }
-                ]
+                "children": [
+                    {"name": "Arathi Basin Horde Wins", "size": 14},
+                    {"name": "Battle for Gilneas Horde Wins", "size": 28},
+                    {"name": "Deepwind Gorge Horde Wins", "size": 4},
+                    {"name": "Eye of The Storm Horde Wins", "size": 12},
+                    {"name": "Strand of The Ancients Horde Wins", "size": 6},
+                    {"name": "Silvershard Mines Horde Wins", "size": 23},
+                    {"name": "Seething Shore Horde Wins", "size": 7},
+                    {"name": "Temple of Kotmogu Horde Wins", "size": 27},
+                    {"name": "Twin Peaks Horde Wins", "size": 11},
+                    {"name": "Warsong Gulch Horde Wins", "size": 23}]
             },
             {
                 "name": "Alliance",
                 "color": "#0240AB",
-                "size": 50,
-                "children": [{
-                        "name": "Easing",
-                        "size": 10
-                    },
-                    {
-                        "name": "FunctionSequence",
-                        "size": 12
-                    },
-                    {
-                        "name": "interpolate",
-                        "children": [{
-                                "name": "ArrayInterpolator",
-                                "size": 13
-                            },
-                            {
-                                "name": "RectangleInterpolator",
-                                "size": 11
-                            }
-                        ]
-                    },
-                    {
-                        "name": "ISchedulable",
-                        "size": 9
-                    },
-                    {
-                        "name": "Tween",
-                        "size": 10
-                    }
-                ]
-            }
-        ]
-    }];
+                "children": [
+                    {"name": "Arathi Basin Alliance Wins", "size": 2},
+                    {"name": "Battle for Gilneas Alliance Wins", "size": 14},
+                    {"name": "Deepwind Gorge Alliance Wins", "size": 3},
+                    {"name": "Eye of The Storm Alliance Wins", "size": 4},
+                    {"name": "Strand of The Ancients Alliance Wins", "size": 3},
+                    {"name": "Silvershard Mines Alliance Wins", "size": 14},
+                    {"name": "Seething Shore Alliance Wins", "size": 7},
+                    {"name": "Temple of Kotmogu Alliance Wins", "size": 13},
+                    {"name": "Twin Peaks Alliance Wins", "size": 15},
+                    {"name": "Warsong Gulch Alliance Wins", "size": 19}]
+            }]
+        }
+    ];
 })
